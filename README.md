@@ -14,9 +14,9 @@
 - dgl==2.0.0+cu121
  
 
-## Run the demo
+## Run and reproduce
 
-Run the following (available dataset: "Yelp2018", "Douban") to reproduce our results.
+Run following python code (available dataset: "Yelp2018", "Douban") with default hyperparameters to reproduce our results.
 
 ```
 python train.py --dataset yelp2018 

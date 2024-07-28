@@ -66,10 +66,10 @@ def initialize_models(num_nodes, device, in_dim, mlp_in_dims, mlp_out_dims):
     generator = Graph_Editer(4, num_nodes, device).to(device)
     env_infer_model = EVAE(args.hidden2, args.hidden2).to(device)
 
-    mlp_num = sum([param.nelement() for param in mlp_model.parameters()])
-    diff_num = sum([param.nelement() for param in diffusion_model.parameters()])
-    vgae_num = sum([p.nelement() for p in vgae_model.parameters()])
-    env_infer_num = sum([p.nelement() for p in env_infer_model.parameters()])
+    # mlp_num = sum([param.nelement() for param in mlp_model.parameters()])
+    # diff_num = sum([param.nelement() for param in diffusion_model.parameters()])
+    # vgae_num = sum([p.nelement() for p in vgae_model.parameters()])
+    # env_infer_num = sum([p.nelement() for p in env_infer_model.parameters()])
 
     # params = mlp_num + diff_num + vgae_num + env_infer_num
     # print('Total Parameters:', params)

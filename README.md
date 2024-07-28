@@ -36,12 +36,13 @@ python train.py --dataset douban
 |   Douban   |  8,735   |  13,143  |     354,933     | 3.1 × 10⁻³  |
 
 
- We retain only those users and items with at 
- least 15 interactions on Food and 25 interactions on Yelp2018 
- and Douban. For all three datasets, only interactions 
- with ratings of 4 or higher are considered positive samples. 
- For the KuaiRec, interactions with a watch ratio of 2 or 
- higher are considered positive samples.
+We retain only those users with at least 15 interactions on 
+the Food dataset, at least 25 interactions on the Yelp2018 and
+Douban datasets, and items with at least 50 interactions on 
+these datasets. For all three datasets, only interactions 
+with ratings of 4 or higher are considered positive samples. 
+For the KuaiRec dataset, interactions with a watch ratio 
+of 2 or higher are considered positive samples.
 
 ## Acknowledgements
 

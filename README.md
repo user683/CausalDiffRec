@@ -1,4 +1,4 @@
-# CausaDiffRec
+# CausalDiffRec
 
 - Paper link：placeholder
 - Model framework

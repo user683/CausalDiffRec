@@ -1,6 +1,6 @@
 # CausalDiffRec
 
-- Paper link：placeholder
+- Paper link: https://arxiv.org/pdf/2408.00490
 - Model framework
 ![png](https://github.com/user683/CausalDiffRec/blob/master/model.png)
 

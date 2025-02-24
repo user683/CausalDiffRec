@@ -1,6 +1,5 @@
 # CausalDiffRec
 
-- Paper link: [Graph Representation Learning via Causal Diffusion for Out-of-Distribution Recommendation](https://arxiv.org/pdf/2408.00490)
 - Model framework
 ![png](https://github.com/user683/CausalDiffRec/blob/master/model.png)
 
@@ -52,10 +51,5 @@ We have cited the relevant references in our paper.
 
 ## Reference
 ```
-@article{zhao2024graph,
-  title={Graph Representation Learning via Causal Diffusion for Out-of-Distribution Recommendation},
-  author={Zhao, Chu and Yang, Enneng and Liang, Yuliang and Lan, Pengxiang and Liu, Yuting and Zhao, Jianzhe and Guo, Guibing and Wang, Xingwei},
-  journal={arXiv preprint arXiv:2408.00490},
-  year={2024}
-}
+
 ```

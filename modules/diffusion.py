@@ -85,10 +85,6 @@ class GaussianDiffusion(nn.Module):
         )
 
     def p_mean_variance(self, model, x_t, t, e):
-        """
-        获取模型在时间步t的预测均值和方差，并结合环境变量e。
-        """
-        # print(x_t.shape)
 
         model_output = model(x_t, t, e)
 
@@ -112,10 +108,8 @@ class GaussianDiffusion(nn.Module):
         }
 
     def p_sample(self, model, x_start, e, steps, sampling_noise=False):
-        """
-        反向扩散过程，结合环境变量e。
-        """
-        assert steps <= self.steps, "推理时的步骤过多。"
+
+        assert steps <= self.steps
         if steps == 0:
             x_t = x_start
         else:
@@ -143,9 +137,7 @@ class GaussianDiffusion(nn.Module):
         return x_t
 
     def training_losses(self, model, x_start, e, reweight=False):
-        """
-        计算训练损失，将环境变量 e 融入到模型中。
-        """
+
         batch_size, device = x_start.size(0), x_start.device
         ts, pt = self.sample_timesteps(batch_size, device, 'importance')
         noise = th.randn_like(x_start)
@@ -185,7 +177,7 @@ class GaussianDiffusion(nn.Module):
         else:
             terms["pred_xstart"] = self._predict_xstart_from_eps(x_t, ts, model_output)
 
-        # 更新 Lt_history 和 Lt_count
+
         for t, loss in zip(ts, terms["loss"]):
             if self.Lt_count[t] == self.history_num_per_term:
                 Lt_history_old = self.Lt_history.clone()
@@ -242,7 +234,6 @@ class GaussianDiffusion(nn.Module):
 
     def q_posterior_mean_variance(self, x_start, x_t, t):
         """
-        计算扩散后验的均值和方差：
         q(x_{t-1} | x_t, x_0)
         """
         assert x_start.shape == x_t.shape
@@ -270,21 +261,11 @@ class GaussianDiffusion(nn.Module):
         )
 
     def SNR(self, t):
-        """
-        计算特定时间步的信噪比。
-        """
         self.alphas_cumprod = self.alphas_cumprod.to(t.device)
         return self.alphas_cumprod[t] / (1 - self.alphas_cumprod[t])
 
     def _extract_into_tensor(self, arr, timesteps, broadcast_shape):
-        """
-        从1D的数组中提取一批索引的值。
 
-        :param arr: 1-D 数组
-        :param timesteps: 需要提取的索引张量
-        :param broadcast_shape: 形状的广播
-        :return: [batch_size, 1, ...] 的张量
-        """
         arr = arr.to(timesteps.device)
         res = arr[timesteps].float()
         while len(res.shape) < len(broadcast_shape):
